@@ -1,5 +1,6 @@
 package com.example.learn_english.user.domain.repo;
 
+import com.example.learn_english.user.application.query.dto.UserDTO;
 import com.example.learn_english.user.domain.model.User;
 
 /**
@@ -10,5 +11,5 @@ public interface UserRepository {
 
     User create(User user);
 
-    User update(User user);
+    User update(UserDTO userDTO);
 }

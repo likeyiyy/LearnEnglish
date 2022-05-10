@@ -1,4 +1,4 @@
-package com.example.learn_english;
+package com.example.learn_english.api.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

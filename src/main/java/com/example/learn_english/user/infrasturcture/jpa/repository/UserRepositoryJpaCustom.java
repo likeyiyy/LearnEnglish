@@ -1,5 +1,6 @@
 package com.example.learn_english.user.infrasturcture.jpa.repository;
 
+import com.example.learn_english.user.application.query.dto.UserDTO;
 import com.example.learn_english.user.domain.model.User;
 import com.example.learn_english.user.domain.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,12 @@ public class UserRepositoryJpaCustom implements UserRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public User update(User user) {
+    public User update(UserDTO userDTO) {
+        User user = userRepositoryJpa.getById(userDTO.getId());
+        user.setNickName(userDTO.getNickName())
+                .setMobile(userDTO.getMobile())
+                .setOpenId(userDTO.getOpenId())
+                .setAvatarUrl(userDTO.getAvatarUrl());
         return userRepositoryJpa.save(user);
     }
 }

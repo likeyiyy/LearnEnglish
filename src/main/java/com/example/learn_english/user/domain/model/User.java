@@ -1,15 +1,17 @@
 package com.example.learn_english.user.domain.model;
 
 import com.example.learn_english.base.domain.model.BaseModel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.learn_english.user.application.query.dto.UserDTO;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 public class User extends BaseModel<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,5 +29,21 @@ public class User extends BaseModel<Long> {
     @Column
     private String avatarUrl;
 
+    public User(
+            String openId,
+            String nickName,
+            String mobile,
+            String avatarUrl
+
+    ) {
+        this.openId = openId;
+        this.nickName = nickName;
+        this.mobile = mobile;
+        this.avatarUrl = avatarUrl;
+    }
+
+    public static User fromDTO(UserDTO userDTO) {
+        return new User(userDTO.getOpenId(), userDTO.getNickName(), userDTO.getMobile(), userDTO.getAvatarUrl());
+    }
 }
 
