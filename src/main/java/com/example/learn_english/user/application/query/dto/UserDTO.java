@@ -1,5 +1,6 @@
 package com.example.learn_english.user.application.query.dto;
 
+import com.example.learn_english.user.application.command.cmd.UpdateUserCommand;
 import com.example.learn_english.user.domain.model.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,4 +46,14 @@ public class UserDTO {
                 .mobile(user.getMobile())
                 .build();
     }
+    public static UserDTO fromCommand(UpdateUserCommand updateUserCommand) {
+        return UserDTO.builder()
+                .id(updateUserCommand.getId())
+                .nickName(updateUserCommand.getNickName())
+                .openId(updateUserCommand.getOpenId())
+                .avatarUrl(updateUserCommand.getAvatarUrl())
+                .mobile(updateUserCommand.getMobile())
+                .build();
+    }
+
 }

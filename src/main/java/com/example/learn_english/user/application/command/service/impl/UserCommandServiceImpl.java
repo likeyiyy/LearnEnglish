@@ -38,12 +38,7 @@ public class UserCommandServiceImpl implements UserCommandService {
 
     @Override
     public void update(UpdateUserCommand userCommand) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(userCommand.getId())
-                .setNickName(userCommand.getNickName())
-                .setMobile(userCommand.getMobile())
-                .setOpenId(userCommand.getOpenId())
-                .setAvatarUrl(userCommand.getAvatarUrl());
+        UserDTO userDTO = UserDTO.fromCommand(userCommand);
         userRepository.update(userDTO);
     }
 }
