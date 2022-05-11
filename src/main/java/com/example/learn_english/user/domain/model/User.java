@@ -2,10 +2,12 @@ package com.example.learn_english.user.domain.model;
 
 import com.example.learn_english.base.domain.model.BaseModel;
 import com.example.learn_english.user.application.query.dto.UserDTO;
+import com.example.learn_english.word.domain.model.Word;
 import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
